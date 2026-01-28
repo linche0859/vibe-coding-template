@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-heavy-100: #EEFAFD;
+  --color-primary-heavy-200: #D3EEF4;
+  --color-primary-heavy-300: #98CFDD;
+  --color-primary-heavy-400: #6DBACC;
+  --color-primary-heavy-500: #42A4BC;
+  --color-primary-heavy-600: #178FAC;
+  --color-primary-heavy-700: #12728A;
+  --color-primary-heavy-800: #0E5667;
+  --color-primary-heavy-900: #0B4857;
+  
+  
+  --color-primary-light-100: #E6FFFF;
+  --color-primary-light-200: #BBE9E7;
+  --color-primary-light-300: #6FDEDA;
+  --color-primary-light-400: #34D2CD;
+  --color-primary-light-500: #00A3B5;
+  --color-primary-light-600: #009AAB;
+  --color-primary-light-700: #00859A;
+  --color-primary-light-800: #006D79;
+  --color-primary-light-900: #004D55;
+  
+  --color-neutral-light-0: #FFFFFF;
+  --color-neutral-light-50: #FAFAFA;
+  --color-neutral-light-100: #F5F5F5;
+  --color-neutral-light-200: #F0F0F0;
+  --color-neutral-light-300: #D9D9D9;
+  --color-neutral-light-400: #BFBFBF;
+  --color-neutral-light-500: #8C8C8C;
+  --color-neutral-light-600: #595959;
+  --color-neutral-light-700: #434343;
+  --color-neutral-light-800: #262626;
+  --color-neutral-light-900: #141414;
+  --color-neutral-light-1000: #000000;
+  
+  --color-neutral-heavy-50: #FAFAFA;
+  --color-neutral-heavy-100: #BCCAD4;
+  --color-neutral-heavy-200: #707E89;
+  --color-neutral-heavy-300: #586874;
+  --color-neutral-heavy-400: #4B5861;
+  --color-neutral-heavy-500: #424C54;
+  --color-neutral-heavy-600: #394249;
+  --color-neutral-heavy-700: #30383E;
+  --color-neutral-heavy-800: #2D353A;
+  --color-neutral-heavy-900: #262D32;
+  --color-neutral-heavy-1000: #1B232B;
+  --color-neutral-heavy-1100: #060A14;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --ring: 193 52% 50%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --accent: 0 0% 96%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 15%;
+    --foreground: 0 0% 98%;
+    --ring: 193 52% 50%;
+    --border: 194 22% 60%;
+    --input: 194 22% 60%;
+    --accent: 0 0% 30%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    color: hsl(var(--foreground));
+  }
+}

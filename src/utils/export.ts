@@ -1,0 +1,101 @@
+import type { CourseData } from '../types/course'
+
+const CHECKMARK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24"><path fill="currentColor" d="M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"></path></svg>`
+
+const CALENDAR_SVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="16px" height="16px" viewBox="0 0 24 24" class="icon flex-shrink-0"><path fill="currentColor" d="M17 2c-.55 0-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V3c0-.55-.45-1-1-1m2 18H5V10h14zm-8-7c0-.55.45-1 1-1s1 .45 1 1s-.45 1-1 1s-1-.45-1-1m-4 0c0-.55.45-1 1-1s1 .45 1 1s-.45 1-1 1s-1-.45-1-1m8 0c0-.55.45-1 1-1s1 .45 1 1s-.45 1-1 1s-1-.45-1-1m-4 4c0-.55.45-1 1-1s1 .45 1 1s-.45 1-1 1s-1-.45-1-1m-4 0c0-.55.45-1 1-1s1 .45 1 1s-.45 1-1 1s-1-.45-1-1m8 0c0-.55.45-1 1-1s1 .45 1 1s-.45 1-1 1s-1-.45-1-1"></path></svg>`
+
+const CLOCK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="16px" height="16px" viewBox="0 0 24 24" class="icon flex-shrink-0"><path fill="currentColor" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8m-.22-13h-.06c-.4 0-.72.32-.72.72v4.72c0 .35.18.68.49.86l4.15 2.49c.34.2.78.1.98-.24a.71.71 0 0 0-.25-.99l-3.87-2.3V7.72c0-.4-.32-.72-.72-.72"></path></svg>`
+
+const GLOBE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="16px" height="16px" viewBox="0 0 24 24" class="icon flex-shrink-0"><path fill="currentColor" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2m6.93 6h-2.95a15.7 15.7 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8M12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96M4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8 8 0 0 1 5.08 16m2.95-8H5.08a8 8 0 0 1 4.33-3.56A15.7 15.7 0 0 0 8.03 8M12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96M14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2m.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2z"></path></svg>`
+
+function escapeHtml(text: string): string {
+  const div = document.createElement('div')
+  div.textContent = text
+  return div.innerHTML
+}
+
+export function generateHTML(data: CourseData): string {
+  const { header, courseIncludes, eventInfo } = data
+
+  const courseItemsHTML = courseIncludes.items
+    .map(
+      (item) =>
+        `<div class="flex items-start gap-2"><span class="flex flex-shrink-0 py-0.5">${CHECKMARK_SVG}</span>${escapeHtml(item)}</div>`
+    )
+    .join('')
+
+  return `<div class="flex flex-col gap-6 lg:gap-7">
+  <div class="flex flex-col gap-3 lg:gap-6">
+    <div class="flex items-center justify-between gap-3 break-all">
+      <div class="flex-shrink-0 text-2xl font-bold lg:text-3xl text-neutral-light-600 dark:text-neutral-light-0">${escapeHtml(header.title)}</div>
+      <div class="no-inherit inline-flex items-center gap-1 transition-colors duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border rounded border-neutral-light-600 text-neutral-light-600 dark:border-neutral-heavy-100 dark:text-neutral-heavy-100 py-0.5 px-1 text-xs lg:py-1 lg:px-1.5 lg:text-sm flex-shrink-0">${escapeHtml(header.badge)}</div>
+    </div>
+    <div class="flex flex-col gap-2 lg:gap-3">
+      <div class="text-xs lg:text-sm">${escapeHtml(header.subtitle)}</div>
+      <a class="no-inherit inline-flex items-center justify-center gap-1 whitespace-nowrap border-transparent ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none duration-300 ease-out bg-primary-heavy-500 text-neutral-light-0 hover:bg-primary-heavy-600 disabled:bg-neutral-light-200 disabled:text-neutral-light-300 dark:disabled:bg-primary-heavy-900 dark:disabled:text-neutral-heavy-200 py-2 px-4 text-sm rounded-md lg:py-2 lg:px-5 lg:text-base lg:rounded-lg w-full" href="${escapeHtml(header.ctaButton.link)}" target="_blank" rel="noopener noreferrer" data-ga="${escapeHtml(header.ctaButton.gaTag)}">${escapeHtml(header.ctaButton.text)}</a>
+    </div>
+  </div>
+  <div>
+    <div class="mb-2 text-sm lg:mb-3 lg:text-base">${escapeHtml(courseIncludes.title)}</div>
+    <div class="space-y-2 text-sm">${courseItemsHTML}</div>
+  </div>
+  <div>
+    <div class="mb-2 text-sm lg:mb-3 lg:text-base">${escapeHtml(eventInfo.title)}</div>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-start gap-2"><div class="flex flex-shrink-0 py-0.5">${CALENDAR_SVG}</div><span>日期：${escapeHtml(eventInfo.date)}</span></div>
+      <div class="flex items-start gap-2"><div class="flex flex-shrink-0 py-0.5">${CLOCK_SVG}</div><span>時間：${escapeHtml(eventInfo.time)}</span></div>
+      <div class="flex items-start gap-2"><div class="flex flex-shrink-0 py-0.5">${GLOBE_SVG}</div><span>上課方式：${escapeHtml(eventInfo.method)}</span></div>
+    </div>
+  </div>
+</div>`
+}
+
+export function beautifyHTML(html: string): string {
+  let formatted = ''
+  let indent = 0
+  const indentSize = 2
+
+  // Split by tags while preserving them
+  const tokens = html.split(/(<[^>]+>)/g).filter((token) => token.trim())
+
+  tokens.forEach((token) => {
+    if (token.startsWith('</')) {
+      // Closing tag
+      indent = Math.max(0, indent - indentSize)
+      formatted += ' '.repeat(indent) + token + '\n'
+    } else if (token.startsWith('<') && !token.endsWith('/>')) {
+      // Opening tag
+      formatted += ' '.repeat(indent) + token + '\n'
+      if (!token.startsWith('<!') && !isSelfClosing(token)) {
+        indent += indentSize
+      }
+    } else if (token.startsWith('<') && token.endsWith('/>')) {
+      // Self-closing tag
+      formatted += ' '.repeat(indent) + token + '\n'
+    } else {
+      // Text content
+      const trimmed = token.trim()
+      if (trimmed) {
+        formatted += ' '.repeat(indent) + trimmed + '\n'
+      }
+    }
+  })
+
+  return formatted.trim()
+}
+
+function isSelfClosing(tag: string): boolean {
+  const selfClosingTags = ['img', 'br', 'hr', 'input', 'meta', 'link']
+  const tagName = tag.match(/<(\w+)/)?.[1]?.toLowerCase()
+  return tagName ? selfClosingTags.includes(tagName) : false
+}
+
+export async function copyToClipboard(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text)
+    return true
+  } catch (error) {
+    console.error('Failed to copy to clipboard:', error)
+    return false
+  }
+}
