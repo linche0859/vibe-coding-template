@@ -129,6 +129,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   'update:template': [template: Template]
   delete: []
+  duplicate: []
 }>()
 
 const copied = ref(false)

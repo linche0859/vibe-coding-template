@@ -205,9 +205,6 @@ watch(
   { deep: true }
 )
 
-function handleInputChange() {
-  // 此函數已由 watch 取代，但保留供驗證函數調用
-}
 
 function handleLinkInput() {
   linkError.value = getValidationError('url', localData.value.header.ctaButton.link)

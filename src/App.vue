@@ -9,7 +9,7 @@ import ThemeToggle from './components/ThemeToggle.vue'
 // 初始化主題
 useTheme()
 
-const { templates, addTemplate, deleteTemplate, updateTemplate, duplicateTemplate } = useTemplates()
+const { templates, deleteTemplate, updateTemplate, duplicateTemplate } = useTemplates()
 
 const showDeleteDialog = ref(false)
 const templateToDelete = ref<string | null>(null)
