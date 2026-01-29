@@ -8,7 +8,7 @@
         />
       </svg>
     </span>
-    <span class="text-gray-900 dark:text-white">{{ text }}</span>
+    <span>{{ text }}</span>
   </div>
 </template>
 

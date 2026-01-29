@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-6 lg:gap-7">
+  <div class="flex flex-col gap-6 text-neutral-light-600 dark:text-neutral-light-0 lg:gap-7">
     <div class="flex flex-col gap-3 lg:gap-6">
       <Header :title="data.header.title" :badge="data.header.badge" />
       <CTA
