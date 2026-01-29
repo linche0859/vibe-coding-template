@@ -1,5 +1,8 @@
 <template>
-  <div class="space-y-4 rounded-lg border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-900">
+  <div 
+    class="space-y-4 rounded-lg border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-900"
+    :data-template-id="template.id"
+  >
     <!-- 模板標題列 -->
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-3">

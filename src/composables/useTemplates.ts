@@ -117,9 +117,9 @@ export function useTemplates() {
     }
   }
 
-  function duplicateTemplate(id: string) {
+  function duplicateTemplate(id: string): string | undefined {
     const template = templates.value.find((t) => t.id === id)
-    if (!template) return
+    if (!template) return undefined
 
     const baseName = template.name.replace(/ \(\d+\)$/, '')
     const name = generateTemplateName(baseName)
@@ -134,6 +134,8 @@ export function useTemplates() {
     // 在當前模板後面插入新模板
     const currentIndex = templates.value.findIndex((t) => t.id === id)
     templates.value.splice(currentIndex + 1, 0, newTemplate)
+
+    return newTemplate.id
   }
 
   return {

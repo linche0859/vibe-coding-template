@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { useTemplates } from './composables/useTemplates'
 import { useTheme } from './composables/useTheme'
 import TemplateItem from './components/TemplateItem.vue'
@@ -35,6 +35,19 @@ function handleDeleteCancel() {
 function handleTemplateUpdate(template: any) {
   updateTemplate(template.id, template.data)
 }
+
+async function handleDuplicate(templateId: string) {
+  const newTemplateId = duplicateTemplate(templateId)
+  if (newTemplateId) {
+    // 等待 DOM 更新
+    await nextTick()
+    // 滚动到新创建的模板
+    const element = document.querySelector(`[data-template-id="${newTemplateId}"]`)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+}
 </script>
 
 <template>
@@ -59,9 +72,10 @@ function handleTemplateUpdate(template: any) {
           v-for="template in templates"
           :key="template.id"
           :template="template"
+          :data-template-id="template.id"
           @update:template="handleTemplateUpdate"
           @delete="confirmDelete(template.id)"
-          @duplicate="duplicateTemplate(template.id)"
+          @duplicate="handleDuplicate(template.id)"
         />
       </div>
 
