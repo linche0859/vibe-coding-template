@@ -6,7 +6,7 @@
     <!-- 模板標題列 -->
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{ template.name }}</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{ displayName }}</h2>
         <span
           v-if="template.isDefault"
           class="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200"
@@ -140,6 +140,11 @@ let copiedTimeout: number | undefined
 
 const generatedHTML = computed(() => {
   return beautifyHTML(generateHTML(props.template.data))
+})
+
+const displayName = computed(() => {
+  const badge = props.template.data.header.badge.trim()
+  return badge || '模板'
 })
 
 function handleUpdate(data: any) {
