@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-6 rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+  <div class="space-y-6 rounded-lg border border-neutral-light-400 bg-white p-6 dark:border-neutral-heavy-400 dark:bg-gray-800">
     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">編輯課程內容</h3>
 
     <!-- 頭部區塊 -->
@@ -38,7 +38,7 @@
     </div>
 
     <!-- CTA 區塊 -->
-    <div class="space-y-4 border-t border-gray-200 pt-6 dark:border-gray-700">
+    <div class="space-y-4 border-t border-neutral-light-400 pt-6 dark:border-neutral-heavy-400">
       <h4 class="font-medium text-gray-700 dark:text-gray-300">行動呼籲按鈕</h4>
 
       <div class="space-y-2">
@@ -73,7 +73,7 @@
     </div>
 
     <!-- 課程包括區塊 -->
-    <div class="space-y-4 border-t border-gray-200 pt-6 dark:border-gray-700">
+    <div class="space-y-4 border-t border-neutral-light-400 pt-6 dark:border-neutral-heavy-400">
       <h4 class="font-medium text-gray-700 dark:text-gray-300">課程包括</h4>
 
       <div class="space-y-2">
@@ -113,7 +113,7 @@
     </div>
 
     <!-- 活動資訊區塊 -->
-    <div class="space-y-4 border-t border-gray-200 pt-6 dark:border-gray-700">
+    <div class="space-y-4 border-t border-neutral-light-400 pt-6 dark:border-neutral-heavy-400">
       <h4 class="font-medium text-gray-700 dark:text-gray-300">活動資訊</h4>
 
       <div class="space-y-2">

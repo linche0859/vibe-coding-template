@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="space-y-4 rounded-lg border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-900"
+    class="space-y-4 rounded-lg border border-neutral-light-400 bg-gray-50 p-6 dark:border-neutral-heavy-400 dark:bg-gray-900"
     :data-template-id="template.id"
   >
     <!-- 模板標題列 -->
@@ -57,7 +57,7 @@
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">預覽</h3>
 
         <!-- 預覽卡片 -->
-        <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div class="rounded-lg border border-neutral-light-400 bg-white p-6 dark:border-neutral-heavy-400 dark:bg-gray-800">
           <Card :data="template.data" />
         </div>
 
